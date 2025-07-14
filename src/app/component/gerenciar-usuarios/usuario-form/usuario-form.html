@@ -1,0 +1,54 @@
+<form [formGroup]="usuarioForm" (ngSubmit)="saveUsuario()">
+    <div class="p-fluid">
+        <div class="p-field">
+            <label for="nome">Nome</label>
+            <input id="nome" type="text" pInputText formControlName="nome" required autofocus>
+            <small *ngIf="usuarioForm.get('nome')?.invalid && (usuarioForm.get('nome')?.dirty || usuarioForm.get('nome')?.touched)" class="p-error">
+                Nome é obrigatório.
+            </small>
+        </div>
+
+        <div class="p-field">
+            <label for="email">Email</label>
+            <input id="email" type="email" pInputText formControlName="email" required>
+            <small *ngIf="usuarioForm.get('email')?.invalid && (usuarioForm.get('email')?.dirty || usuarioForm.get('email')?.touched)" class="p-error">
+                Email é obrigatório e deve ser válido.
+            </small>
+        </div>
+
+        <div class="p-field">
+            <label for="senha">Senha</label>
+            <input id="senha" type="password" pInputText formControlName="senha" [required]="!usuario?.id"> <small *ngIf="usuarioForm.get('senha')?.invalid && (usuarioForm.get('senha')?.dirty || usuarioForm.get('senha')?.touched)" class="p-error">
+                Senha é obrigatória para novos usuários.
+            </small>
+        </div>
+
+        <div class="p-field">
+            <label for="dataDesativacao">Data de Desativação</label>
+            <p-datepicker
+                id="dataDesativacao"
+                formControlName="dataDesativacao"
+                [showIcon]="true"
+                dateFormat="dd/mm/yy"
+                [touchUI]="true"
+                [showClear]="true" ></p-datepicker>
+        </div>
+
+        <div class="p-field">
+            <label for="permissoes">Permissões</label>
+            <p-multiSelect
+                id="permissoes"
+                [options]="allPermissoes"
+                formControlName="permissoes"
+                optionLabel="name"
+                display="chip"
+                placeholder="Selecione as permissões"
+            ></p-multiSelect>
+        </div>
+    </div>
+
+    <button pButton label="Cancelar" icon="pi pi-times" class="p-button-text" (click)="cancel()"></button>
+    <button pButton label="Salvar" icon="pi pi-check" type="submit" [disabled]="usuarioForm.invalid"></button>
+    <ng-template pTemplate="footer">
+    </ng-template>
+</form>
