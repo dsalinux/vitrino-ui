@@ -45,15 +45,15 @@ export class UsuarioList implements OnInit {
   }
 
   loadUsuarios(): void {
-    this.usuarioService.getUsuarios().subscribe(
-      (usuarios: Usuario[]) => {
+    this.usuarioService.getUsuarios().subscribe({
+      next: (usuarios: Usuario[]) => {
         this.usuarios = usuarios;
       },
-      (error) => {
+      error: (error) => {
         console.error('Erro ao carregar usuários:', error);
         this.messageService.add({ severity: 'error', summary: 'Erro', detail: 'Não foi possível carregar os usuários.' });
       }
-    );
+    });
   }
 
   deleteUsuario(usuario: Usuario): void {
@@ -61,13 +61,19 @@ export class UsuarioList implements OnInit {
   }
 
   editUsuario(usuario: Usuario): void {
-
+    this.selectedUsuario = usuario;
+    this.displayUsuarioFormDialog = true;
   }
 
   openNewUsuarioDialog(): void {
     this.selectedUsuario = null; // Zera para indicar criação de novo usuário
     this.displayUsuarioFormDialog = true;
   }
-
+  onUsuarioSaved(saved: boolean): void {
+    this.displayUsuarioFormDialog = false; // Fecha o diálogo
+    if (saved) {
+      this.loadUsuarios(); // Recarrega a lista de usuários para mostrar a alteração
+    }
+  }
 
 }

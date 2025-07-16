@@ -5,7 +5,7 @@
         </ng-template>
     </p-toolbar>
 
-    <p-table [value]="usuarios" [paginator]="true" [rows]="10">
+    <p-table responsiveLayout="stack"  [value]="usuarios" [paginator]="true" [rows]="10">
         <ng-template pTemplate="header">
             <tr>
                 <th>ID</th>
@@ -39,7 +39,7 @@
 </p-card>
 
 <p-dialog [(visible)]="displayUsuarioFormDialog" [style]="{width: '50vw'}" header="{{ selectedUsuario ? 'Editar Usuário' : 'Novo Usuário' }}" [modal]="true">
-    <app-usuario-form [usuario]="selectedUsuario" ></app-usuario-form>
+    <app-usuario-form [usuario]="selectedUsuario" (usuarioSaved)="onUsuarioSaved($event)"></app-usuario-form>
 </p-dialog>
 
 <p-toast></p-toast>
