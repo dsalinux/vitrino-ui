@@ -1,0 +1,27 @@
+<p-card header="Fluxo de Caixa">
+  <p-table responsiveLayout="stack" [value]="fluxo" [paginator]="true" [rows]="10">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>ID</th>
+        <th>Descrição</th>
+        <th>Preço</th>
+        <th>Forma De Pagamento</th>
+        <th>Data</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-fluxo>
+      <tr>
+        <td>{{ fluxo.id }}</td>
+        <td>{{ fluxo.descricao }}</td>
+        <td>{{ fluxo.valor | currency: 'BRL' }}</td>
+        <td>{{ fluxo.formaPagamento.nome }}</td>
+        <td>{{ fluxo.dataRegistro | date:'shortDate' }}</td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptyMessage">
+      <tr>
+        <td colspan="4">Nenhum produto encontrado.</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-card>
