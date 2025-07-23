@@ -25,7 +25,12 @@ export class App {
           label: 'Usuários',
           icon: 'pi pi-fw pi-user',
           routerLink: '/usuarios' 
-        }
+        },
+        {
+          label: 'Clientes',
+          icon: 'pi pi-fw pi-user',
+          routerLink: '/clientes' 
+        },
       ]
     },
     {

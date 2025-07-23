@@ -1,0 +1,47 @@
+<form [formGroup]="clienteForm" (ngSubmit)="submitForm()">
+
+    <p-iftalabel variant="on">
+        <input pInputText id="nome" type="text" formControlName="nome" required />
+        <label for="nome">Nome</label>
+    </p-iftalabel>
+
+    <p-iftalabel variant="on">
+        <input pInputText id="sobrenome" type="text" formControlName="sobrenome" />
+        <label for="sobrenome">Sobrenome</label>
+    </p-iftalabel>
+
+    <p-iftalabel variant="on">
+        <input pInputText id="email" type="email" formControlName="email" required />
+        <label for="email">Email</label>
+    </p-iftalabel>
+
+    <p-iftalabel variant="on">
+        <input pInputText id="senha" type="password" formControlName="senha" required />
+        <label for="senha">Senha</label>
+    </p-iftalabel>
+
+    <p-iftalabel variant="on">
+        <input pInputText id="cpf" type="text" formControlName="cpf" required />
+        <label for="cpf">CPF</label>
+    </p-iftalabel>
+
+    <p-iftalabel variant="on">
+        <input pInputText id="telefone" type="tel" formControlName="telefone" required />
+        <label for="telefone">Telefone</label>
+    </p-iftalabel>
+
+    <p-iftalabel variant="on">
+        <input pInputText id="dataNasc" type="date" formControlName="dataNascimento" required />
+        <label for="dataNasc">Data de Nascimento</label>
+    </p-iftalabel>
+
+    
+    <button pButton label="Cancelar" icon="pi pi-times" class="p-button-text" (click)="cancel()"></button>
+    <button pButton label="Salvar" icon="pi pi-check" type="submit" [disabled]="clienteForm.invalid"></button>
+</form>
+<!-- <div class="p-field">
+    <label for="permissoes">Permissões</label>
+    <p-multiSelect id="permissoes" [options]="allPermissoes" formControlName="permissoes" optionLabel="name"
+        display="chip" placeholder="Selecione as permissões">
+    </p-multiSelect>
+</div> -->
