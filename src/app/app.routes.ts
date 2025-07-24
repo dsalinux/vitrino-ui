@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
-import { FluxoCaixa } from './component/fluxo-caixa/fluxo-caixa';
+import { App } from './app';
+import { FluxoList } from  './component/fluxo-caixa/fluxo-list/fluxo-list';
 import { Dashboard } from './component/dashboard/dashboard';
 import { UsuarioList } from './component/gerenciar-usuarios/usuario-list/usuario-list';
 import { Teste } from './component/teste/teste';
@@ -8,7 +9,7 @@ import { ClienteList } from './component/gerenciar-clientes/cliente-list/cliente
 
 export const routes: Routes = [
     { path: '', component: Dashboard },
-    { path: 'fluxo-caixa', component: FluxoCaixa },
+    { path: 'fluxo-caixa', component: FluxoList },
     { path: 'usuarios', component: UsuarioList},
     { path: 'clientes', component: ClienteList},
     { path: 'teste', component: Teste},
